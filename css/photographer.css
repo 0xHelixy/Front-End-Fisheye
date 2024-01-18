@@ -3,7 +3,7 @@
 }
 
 .photograph-header {
-    background-color: #FAFAFA;
+    background-color: #fafafa;
     height: 300px;
     margin: 0 100px;
 }
@@ -16,14 +16,14 @@
     width: 170px;
     height: 70px;
     border: none;
-    background-color: #901C1C;
+    background-color: #901c1c;
     border-radius: 5px;
     cursor: pointer;
 }
 
 .modal {
     border-radius: 5px;
-    background-color: #DB8876;
+    background-color: #db8876;
     width: 50%;
     display: flex;
     flex-direction: column;
@@ -56,7 +56,7 @@ form {
 }
 
 form label {
-    color: #312E2E;
+    color: #312e2e;
     font-size: 36px;
 }
 
@@ -73,4 +73,224 @@ form input {
     height: 68px;
     border: none;
     border-radius: 5px;
+}
+
+main {
+    margin: 50px;
+}
+
+article {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+    height: 100%;
+    margin-top: 10px;
+    min-height: 320px;
+    /* margin-top: 10px; */
+    width: 100%;
+    /* justify-content: space-between; */
+    /* border: 1px solid coral; */
+    cursor: pointer;
+}
+
+article:hover {
+    background-color: #fafafa;
+}
+
+.left-side {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* height: 320px; */
+}
+
+.left-side h2 {
+    color: rgba(211, 87, 60, 1);
+    margin: 0;
+    margin-top: 20px;
+    font-size: 24px !important;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.location {
+    display: flex;
+    align-items: center;
+    color: rgba(144, 28, 28, 1);
+    height: 50px;
+}
+
+.location h4,
+h5 {
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    font-family: DM Sans;
+}
+
+.pic {
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.left-side p {
+    color: #525252;
+    font-family: DM Sans;
+    font-size: 14px;
+    margin-top: 0;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    font-style: italic;
+    text-align: center;
+}
+
+/* medias */
+
+.photographe_medias {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 10px;
+}
+
+.media-element {
+    width: calc(33.33% - 20px);
+    margin: 10px;
+    font-size: medium;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.media-element img,
+.media-element video {
+    width: 350px;
+    height: 300px;
+    flex-shrink: 0;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+/* active */
+.media-element img.active,
+.media-element video.active {
+    width: 350px;
+    height: 300px;
+    flex-shrink: 0;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+.info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    text-align: left;
+    width: 75%;
+}
+
+.info h2 {
+    margin-left: -8px;
+}
+
+.likes {
+    display: flex;
+    margin-right: -10px;
+    justify-content: space-around;
+    width: 15%;
+}
+
+.fas.fa-heart {
+    color: #901c1c;
+    width: 21px;
+    height: 24px;
+}
+
+.heart-button {
+    color: #901c1c;
+    width: 21px;
+    height: 24px;
+    position: absolute;
+    margin-left: -10px;
+}
+
+.likes p {
+    color: #901c1c;
+    font-family: DM Sans;
+    font-size: 19px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+* encart likes */ .encartLikes {
+    width: 70%;
+
+    align-items: center;
+    justify-content: space-around;
+    margin-bottom: 2%;
+    position: fixed;
+    /* top:20px; */
+    bottom: -29px;
+    z-index: 100;
+}
+
+.encart {
+    margin-left: 106%;
+    margin-top: 195px;
+    height: 50px;
+    flex-shrink: 0;
+
+    display: flex;
+    width: 30%;
+    justify-content: space-between;
+    background-color: #db8876;
+    align-items: center;
+
+    color: #000;
+
+    text-align: right;
+    font-family: DM Sans;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.encart h2 {
+    width: 40%;
+    color: #000;
+
+    text-align: right;
+    font-family: DM Sans;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-right: 10px;
+}
+
+.likestotal {
+    width: 20%;
+    display: flex;
+    margin-left: 10px;
+
+    color: #000;
+
+    text-align: right;
+    font-family: DM Sans;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
 }
