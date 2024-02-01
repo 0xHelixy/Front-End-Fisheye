@@ -6,7 +6,8 @@
   <meta charset="utf-8">
   <link rel="icon" type="image/png" href="assets/favicon.png">
   <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-  <title>Fisheye - photographe </title>
+  <script src="https://kit.fontawesome.com/30c5a704e4.js" crossorigin="anonymous"></script>
+  <title>Fisheye - Photographe </title>
 </head>
 
 <body>
@@ -15,35 +16,60 @@
       <img src="assets/images/logo.png" class="logo" alt="Photographer image" />
     </a>
   </header>
+
   <main id="main">
     <div class="photograph-header">
-      <!-- <article aria-labelledby="photograph-title"> -->
       <div class="leftside"></div>
-      <!-- </article> -->
       <button class="contact_button" aria-label="Contactez le photographe">Contactez-moi</button>
     </div>
+
+    <section class="filtre">
+      <label for="filtre-select" class="filtre-label" id="filtre-label">Trier par</label>
+      <div class="filtre-liste" role="menubar" aria-controls="dropdown" aria-labelledby="filtre-label"
+        aria-haspopup="listbox" aria-expanded="false">
+        <select id="filtre-select" aria-labelledby="filtre-label">
+          <option value="popularite" checked>Popularité</option>
+          <option value="date">Date</option>
+          <option value="titre">Titre</option>
+        </select>
+      </div>
+    </section>
 
     <div class="encartLikes" aria-live="polite" aria-atomic="true"></div>
 
     <div class="photographe_medias" role="region" aria-label="Contenu multimédia du photographe"></div>
   </main>
-  <div id="contact_modal">
+
+  <dialog id="contact_modal" role="dialog" aria-labelledby="contact-modal-title">
     <div class="modal">
       <header>
-        <h2>Contactez-moi</h2>
-        <img src="assets/icons/close.svg" onclick="closeModal()" />
+        <h2 id="contact-modal-title">Contactez-moi</h2>
+        <img class="close" src="assets/icons/close-btn.svg"  aria-label="Fermer la fenêtre modale"  alt="Fermer modale" />
       </header>
       <form>
         <div>
-          <label>Prénom</label>
-          <input />
+          <label class="modal-type" for="prenom">Prénom</label>
+          <input class="modal-input" type="text" id="prenom" required aria-required="true" />
         </div>
-        <button class="contact_button">Envoyer</button>
+        <div>
+          <label class="modal-type" for="nom">Nom</label>
+          <input class="modal-input" type="text" id="nom" required aria-required="true" />
+        </div>
+        <div>
+          <label class="modal-type" for="email">Email</label>
+          <input class="modal-input" type="email" id="email" required aria-required="true" />
+        </div>
+        <div>
+          <label class="modal-type" for="message">Votre message</label>
+          <textarea name="message" id="message" required aria-required="true"></textarea>
+        </div>
+        <button class="contact-button" type="submit" aria-label="Envoyer le message">Envoyer</button>
       </form>
     </div>
-  </div>
+  </dialog>
+
   <script type="module" src="/scripts/pages/photographer.js"></script>
   <script type="module" src="/scripts/utils/contactForm.js"></script>
-</body>
 
+</body>
 </html>

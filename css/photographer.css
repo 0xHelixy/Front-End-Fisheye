@@ -4,11 +4,14 @@
 
 .photograph-header {
     background-color: #fafafa;
-    height: 300px;
     margin: 0 100px;
+    padding: 0px 40px;
 }
 
 .contact_button {
+    position: absolute;
+    top: 30%;
+    left: 50%;
     font-size: 20px;
     font-weight: bold;
     color: white;
@@ -81,17 +84,15 @@ main {
 
 article {
     display: flex;
+    flex-direction: row-reverse;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     justify-items: center;
     height: 100%;
-    margin-top: 10px;
     min-height: 320px;
     /* margin-top: 10px; */
     width: 100%;
-    /* justify-content: space-between; */
     /* border: 1px solid coral; */
-    cursor: pointer;
 }
 
 article:hover {
@@ -103,7 +104,6 @@ article:hover {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* height: 320px; */
 }
 
 .left-side h2 {
@@ -194,9 +194,8 @@ h5 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 10px;
     text-align: left;
-    width: 75%;
+    width: 55%;
 }
 
 .info h2 {
@@ -207,13 +206,14 @@ h5 {
     display: flex;
     margin-right: -10px;
     justify-content: space-around;
-    width: 15%;
+    width: 23%;
 }
 
 .fas.fa-heart {
     color: #901c1c;
     width: 21px;
     height: 24px;
+    margin-top: 23px;
 }
 
 .heart-button {
@@ -233,32 +233,33 @@ h5 {
     line-height: normal;
 }
 
-* encart likes */ .encartLikes {
+* encart likes */ 
+
+.encartLikes {
     width: 70%;
 
     align-items: center;
     justify-content: space-around;
     margin-bottom: 2%;
     position: fixed;
-    /* top:20px; */
     bottom: -29px;
     z-index: 100;
 }
 
 .encart {
-    margin-left: 106%;
-    margin-top: 195px;
     height: 50px;
     flex-shrink: 0;
-
+    position: fixed;
+    bottom: 0;
+    right: 30px;
     display: flex;
-    width: 30%;
+    width: 18%;
     justify-content: space-between;
     background-color: #db8876;
     align-items: center;
+    z-index: 1000;
 
     color: #000;
-
     text-align: right;
     font-family: DM Sans;
     font-size: 24px;
@@ -284,9 +285,7 @@ h5 {
     width: 20%;
     display: flex;
     margin-left: 10px;
-
     color: #000;
-
     text-align: right;
     font-family: DM Sans;
     font-size: 20px;
@@ -294,3 +293,36 @@ h5 {
     font-weight: 500;
     line-height: normal;
 }
+
+/* filtre */
+
+.filtre {
+    position: relative;
+    margin-bottom: 58px;
+    padding-top: 30px;
+    margin-left: 5%;
+  }
+  
+  .filtre-label {
+    color: black;
+    font-weight: 700;
+    padding-top: 9px;
+  }
+  
+  .filtre-liste {
+    position: absolute;
+    top: 20px;
+    left: 80px;
+    width: 170px;
+  }
+  
+  #filtre-select {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    background-color: #901c1c;
+    cursor: pointer;
+    appearance: none;
+  }

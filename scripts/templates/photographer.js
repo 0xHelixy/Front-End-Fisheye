@@ -1,8 +1,7 @@
 import { MediaFactory } from "./mediaFactory.js";
+import { createLightBox } from "./lightBox.js";
 
 export function photographerTemplate(data) {
-  console.log("data", data);
-
   const { name, portrait, city, country, price, tagline } = data;
 
   const picture = `assets/photographers/${portrait}`;
@@ -37,7 +36,6 @@ export function photographerTemplate(data) {
     leftSide.appendChild(p);
     leftSide.appendChild(priceElement);
     article.appendChild(leftSide);
-    // article.appendChild(btn);
 
     return article;
   }
@@ -99,3 +97,47 @@ const displayMedia = (
     }
   });
 };
+
+// filter with likes/popularity/date
+
+const filterMedia = (photographerMedia, mediaContainer) => {
+  const searchInput = document.getElementById("filtre-select").value.toLowerCase();
+
+  console.log("Search Input:", searchInput);
+
+  if (searchInput === "popularite") {
+    console.log('Selected "Popularité"');
+    // Sort by likes (popularity)
+    photographerMedia.sort((a, b) => b.likes - a.likes);
+  } else if (searchInput === "titre") {
+    console.log("selected title");
+    // Sort by title
+    photographerMedia.sort((a, b) => {
+      return a.title.localeCompare(b.title);
+    });
+  }
+
+  else if (searchInput === "date") {
+    console.log("selected date");
+    // Sort by date
+    photographerMedia.sort((a, b) => new Date(a.date) - new Date(b.date));
+  }
+
+  mediaContainer.innerHTML = "";
+
+  // Re-render the media based on the sorted array
+  photographerMedia.forEach((media) => {
+    const mediaFactory = new MediaFactory(media, media.photographerId);
+    mediaContainer.innerHTML += mediaFactory.renderMedia();
+  });
+};
+
+
+ //contact form
+ const form = document.querySelector("form");
+ const username = document.getElementById("prenom");
+ const surname = document.getElementById("nom");
+ const email = document.getElementById("email");
+ const message = document.getElementById("message");
+
+

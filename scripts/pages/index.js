@@ -25,6 +25,9 @@ async function displayData(photographers) {
     const photographerModel = photographerTemplate(photographer);
     const photographCard = photographerModel.getUserCardDOM();
 
+    // gestion de l'accessibilité avec aria-label
+    photographCard.setAttribute("aria-label", `${photographer.name}'s profile. Location: ${photographer.city}, ${photographer.country}. Tagline: ${photographer.tagline}. Price: ${photographer.price} euros per day.`);
+
     photographCard.dataset.id = photographer.id;
 
     photographCard.addEventListener("click", () => {

@@ -49,11 +49,7 @@ export class MediaFactory {
     }
   
     renderEncart(photographerPrice) {
-      const totalLikes = this.media.reduce(
-        (acc, mediaItem) => acc + mediaItem.likes,
-        0
-      );
-  
+      const totalLikes = this.media.reduce((acc, mediaItem) => acc + mediaItem.likes, 0);
       return `
         <div class="encart" role="region" aria-label="Informations sur les likes et le prix du photographe">
           <div class="likestotal">
