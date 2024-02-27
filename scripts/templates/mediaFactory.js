@@ -54,8 +54,8 @@ export class MediaFactory {
         <div class="encart" role="region" aria-label="Informations sur les likes et le prix du photographe">
           <div class="likestotal">
             <p class="totalLikes" aria-live="polite">${totalLikes}</p>
-            <span role="img" aria-label="likes"><i class="fas fa-heart"></i></span>
-          </div>
+            <span role="img" aria-label="likes"><i class="fas fa-heart black-heart"></i></span>
+            </div>
           <h2>${photographerPrice}€ / jour</h2>
         </div>
       `;

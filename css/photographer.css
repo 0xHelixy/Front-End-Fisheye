@@ -1,6 +1,20 @@
 #contact_modal {
     display: none;
-}
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: fixed;
+    width: 100%;
+    height: 96vh;
+    z-index: 1000;
+    border: none;
+  
+    background-color: rgba(255, 255, 255, 0.9);
+  
+    .filter {
+      z-index: -1;
+    }
+  }
 
 .photograph-header {
     background-color: #fafafa;
@@ -22,7 +36,30 @@
     background-color: #901c1c;
     border-radius: 5px;
     cursor: pointer;
+
 }
+
+.contact_button:hover {
+    background-color: #D3573C;
+    color: black;
+}
+
+.contact-button {
+    background-color: #901c1c;
+    border-radius: 5px;
+    width: 170px;
+    height: 69px;
+    flex-shrink: 0;
+    color: #fff;
+  
+    cursor: pointer;
+  
+    text-align: center;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
 
 .modal {
     border-radius: 5px;
@@ -34,6 +71,7 @@
     justify-content: space-between;
     padding: 35px;
     margin: auto;
+    border: none;
 }
 
 .modal header {
@@ -74,6 +112,13 @@ form div {
 form input {
     width: 100%;
     height: 68px;
+    border: none;
+    border-radius: 5px;
+}
+
+.modal-message {
+    width: 100%;
+    height: 140px;
     border: none;
     border-radius: 5px;
 }
@@ -196,6 +241,7 @@ h5 {
     align-items: center;
     text-align: left;
     width: 55%;
+    color: #901C1C;
 }
 
 .info h2 {
@@ -211,6 +257,13 @@ h5 {
 
 .fas.fa-heart {
     color: #901c1c;
+    width: 21px;
+    height: 24px;
+    margin-top: 23px;
+}
+
+.fas.fa-heart.black-heart {
+    color: black;
     width: 21px;
     height: 24px;
     margin-top: 23px;
@@ -325,4 +378,15 @@ h5 {
     background-color: #901c1c;
     cursor: pointer;
     appearance: none;
+  }
+
+  /* Style for options */
+  #filtre-select option {
+    background-color: #901c1c;
+    color: white;
+  }
+  
+  #filtre-select option:hover {
+    background-color: white;
+    color: #901c1c;
   }

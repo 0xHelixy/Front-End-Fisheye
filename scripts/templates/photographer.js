@@ -6,6 +6,8 @@ export function photographerTemplate(data) {
 
   const picture = `assets/photographers/${portrait}`;
   const article = document.createElement("article");
+  const closeBtn = document.querySelector(".close");
+  const modalContact = document.getElementById("contact_modal");
 
   function getUserCardDOM() {
     const img = document.createElement("img");
@@ -40,8 +42,67 @@ export function photographerTemplate(data) {
     return article;
   }
 
+  //contact form
+  const form = document.querySelector("form");
+  const username = document.getElementById("prenom");
+  const surname = document.getElementById("nom");
+  const email = document.getElementById("email");
+  const message = document.getElementById("message");
+
+  const submitForm = () => {
+    form?.addEventListener("submit", (event) => {
+      event.preventDefault();
+      if (username.value === "" || surname.value === "" || email.value === "") {
+        alert("Veuillez remplir tous les champs.");
+        console.log("Veuillez remplir tous les champs.");
+      } else {
+        let user = {
+          prenom: username.value,
+          nom: surname.value,
+          mail: email.value,
+          msg: message.value,
+        };
+        // alert(`Bonjour ${user.prenom}, votre message a bien été envoyé.`);
+
+        console.log(`Bonjour ${user.prenom}, votre message a bien été envoyé.`);
+        console.log(user);
+        username.value = "";
+        surname.value = "";
+        email.value = "";
+        message.value = "";
+      }
+
+      closeModal();
+    });
+  };
+
+  submitForm();
+
+  const contactBtn = document.querySelector(".contact_button");
+
+  const displayModal = () => {
+    modalContact.style.display = "block";
+    console.log(modalContact);
+  };
+
+  const closeModal = () => {
+    modalContact.style.display = "none";
+  };
+
+  contactBtn?.addEventListener("click", displayModal);
+  closeBtn?.addEventListener("click", closeModal);
+
   return { name, picture, getUserCardDOM, displayMedia };
 }
+
+const showLightBox = (index, photographerMedia) => {
+  // Get the clicked media
+  const clickedMedia = photographerMedia[index];
+
+  console.log("User clicked on the image:", clickedMedia);
+
+  createLightBox(clickedMedia, photographerMedia, index);
+};
 
 const displayMedia = (
   photographerMedia,
@@ -98,28 +159,76 @@ const displayMedia = (
   });
 };
 
-// filter with likes/popularity/date
+const addLikes = (likeBtn) => {
+  // on cherche le bon element pour le like
+  const mediaElement = likeBtn.closest(".media-element"); // on utilise closest pour retrouver l'ancestor le plus près
+
+  if (mediaElement) {
+    const likesContainer = mediaElement.querySelector(".likes p");
+
+    // on check si le user a déjà liké ou pas
+    const alreadyLiked = mediaElement.classList.contains("liked");
+
+    if (!alreadyLiked) {
+      // on incrémente les likes et l'UI
+      const currentLikes = parseInt(likesContainer.textContent);
+      likesContainer.textContent = currentLikes + 1;
+
+      // on ajoute une classe pour montrer que l'utilisateur a déjà liké
+      mediaElement.classList.add("liked");
+    } else {
+      // on decrement les likes
+      const currentLikes = parseInt(likesContainer.textContent);
+      likesContainer.textContent = currentLikes - 1;
+
+      // on enleve la classe liked si l'utilisateur retire son like
+      mediaElement.classList.remove("liked");
+    }
+
+    // on update le montant total de like sur la page du photographe
+    allLikesEncart();
+  }
+};
+
+const allLikesEncart = () => {
+  const encartLikesContainer = document.querySelector(".encartLikes");
+  const likeButtons = document.querySelectorAll(".heart-button");
+
+  // on calcul le total des likes
+  const totalLikes = Array.from(likeButtons).reduce((acc, button) => {
+    const mediaElement = button.parentNode.parentNode;
+    console.log(mediaElement);
+    const likesContainer = mediaElement.querySelector(".likes p");
+    return acc + parseInt(likesContainer.textContent);
+  }, 0);
+
+  // on update le total
+  const totalLikesElement = encartLikesContainer.querySelector(".totalLikes");
+  if (totalLikesElement) {
+    totalLikesElement.textContent = totalLikes;
+  }
+};
 
 const filterMedia = (photographerMedia, mediaContainer) => {
-  const searchInput = document.getElementById("filtre-select").value.toLowerCase();
+  const searchInput = document
+    .getElementById("filtre-select")
+    .value.toLowerCase();
 
   console.log("Search Input:", searchInput);
 
   if (searchInput === "popularite") {
     console.log('Selected "Popularité"');
-    // Sort by likes (popularity)
+    // on tri par like (popularité)
     photographerMedia.sort((a, b) => b.likes - a.likes);
   } else if (searchInput === "titre") {
     console.log("selected title");
-    // Sort by title
+    // on tri par titre
     photographerMedia.sort((a, b) => {
       return a.title.localeCompare(b.title);
     });
-  }
-
-  else if (searchInput === "date") {
+  } else if (searchInput === "date") {
     console.log("selected date");
-    // Sort by date
+    // tri par date
     photographerMedia.sort((a, b) => new Date(a.date) - new Date(b.date));
   }
 
@@ -131,13 +240,3 @@ const filterMedia = (photographerMedia, mediaContainer) => {
     mediaContainer.innerHTML += mediaFactory.renderMedia();
   });
 };
-
-
- //contact form
- const form = document.querySelector("form");
- const username = document.getElementById("prenom");
- const surname = document.getElementById("nom");
- const email = document.getElementById("email");
- const message = document.getElementById("message");
-
-
