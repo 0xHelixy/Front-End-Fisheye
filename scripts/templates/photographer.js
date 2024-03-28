@@ -2,6 +2,7 @@ import { MediaFactory } from "./mediaFactory.js";
 import { createLightBox } from "./lightBox.js";
 
 export function photographerTemplate(data) {
+  
   const { name, portrait, city, country, price, tagline } = data;
 
   const picture = `assets/photographers/${portrait}`;
@@ -13,9 +14,9 @@ export function photographerTemplate(data) {
     const img = document.createElement("img");
     img.classList.add("pic");
     img.setAttribute("src", picture);
+    img.setAttribute("alt", "picture of" + name);
     const h2 = document.createElement("h2");
     const h4 = document.createElement("h4");
-    const h5 = document.createElement("h5");
     const p = document.createElement("p");
     const priceElement = document.createElement("p");
 
@@ -32,8 +33,8 @@ export function photographerTemplate(data) {
     location.classList.add("location");
     location.appendChild(h4);
 
-    article.appendChild(img);
-    location.appendChild(h5);
+    article.appendChild(img);``
+    article.setAttribute('tabindex', '0');
     leftSide.appendChild(location);
     leftSide.appendChild(p);
     leftSide.appendChild(priceElement);
@@ -41,6 +42,7 @@ export function photographerTemplate(data) {
 
     return article;
   }
+
 
   //contact form
   const form = document.querySelector("form");
