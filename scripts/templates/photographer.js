@@ -43,7 +43,6 @@ export function photographerTemplate(data) {
     return article;
   }
 
-
   //contact form
   const form = document.querySelector("form");
   const username = document.getElementById("prenom");
@@ -84,6 +83,7 @@ export function photographerTemplate(data) {
 
   const displayModal = () => {
     modalContact.style.display = "block";
+    username.focus();  // Focus premier champs du formulaire
     console.log(modalContact);
   };
 

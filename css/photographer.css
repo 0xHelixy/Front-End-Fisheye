@@ -121,6 +121,11 @@ form input {
     height: 140px;
     border: none;
     border-radius: 5px;
+    font-size: 28px;
+}
+
+.modal-input {
+    font-size: 28px;
 }
 
 main {
@@ -324,7 +329,6 @@ h5 {
 .encart h2 {
     width: 40%;
     color: #000;
-
     text-align: right;
     font-family: DM Sans;
     font-size: 20px;
@@ -378,15 +382,4 @@ h5 {
     background-color: #901c1c;
     cursor: pointer;
     appearance: none;
-  }
-
-  /* Style for options */
-  #filtre-select option {
-    background-color: #901c1c;
-    color: white;
-  }
-  
-  #filtre-select option:hover {
-    background-color: white;
-    color: #901c1c;
   }

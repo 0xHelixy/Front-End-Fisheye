@@ -1,4 +1,5 @@
 export const createLightBox = (clickedMedia, photographerMedia, currentIndex) => {
+
     // Create modal elements
     let imgCloseBtn = document.createElement("img");
     let modalContact = document.createElement("div");
@@ -7,10 +8,14 @@ export const createLightBox = (clickedMedia, photographerMedia, currentIndex) =>
     let content = document.createElement("div");
     let media;
     let mediaTitle = document.createElement("p");
-  
     let nextArrow = document.createElement("img");
     let backArrow = document.createElement("img");
-  
+
+    // Rendre les éléments interactifs avec la tabulation
+    imgCloseBtn.tabIndex = 1;
+    nextArrow.tabIndex = 3;
+    backArrow.tabIndex = 2;
+
     // Add classes to modal elements
     modalContact.classList.add("modal_contact");
     content.classList.add("content");
@@ -48,8 +53,7 @@ export const createLightBox = (clickedMedia, photographerMedia, currentIndex) =>
     nextArrow.src = "assets/images/icons/next.svg";
     backArrow.src = "assets/images/icons/back.svg";
     nextArrow.setAttribute("aria-label", "Passer à la photo suivante");
-backArrow.setAttribute("aria-label", "Revenir à la photo précédente");
-
+    backArrow.setAttribute("aria-label", "Revenir à la photo précédente");
     nextArrow.style.position = "absolute";
     nextArrow.style.top = "50%";
     nextArrow.style.right = "-110px";
@@ -91,10 +95,58 @@ backArrow.setAttribute("aria-label", "Revenir à la photo précédente");
     content.append(media, mediaTitle, nextArrow, backArrow, header);
     modal.append(content);
     modalContact.append(modal);
-  
+    
+     // Show the modal contact and focus on back arrow
+  document.body.appendChild(modalContact);
+  backArrow.focus();
+
+  // Function to trap the tab key within the lightbox
+  const trapTabKey = (e) => {
+    const focusableElements = [imgCloseBtn, backArrow, nextArrow]; // Gather our focusable elements
+    const firstTabStop = focusableElements[0];
+    const lastTabStop = focusableElements[focusableElements.length - 1];
+
+    if (e.key === 'Tab') {
+      if (e.shiftKey) {
+        if (document.activeElement === firstTabStop) {
+          e.preventDefault();
+          lastTabStop.focus();
+        }
+      } else {
+        if (document.activeElement === lastTabStop) {
+          e.preventDefault();
+          firstTabStop.focus();
+        }
+      }
+    }
+  };
+
+  // Listen for and trap the tab key
+  modal.addEventListener('keydown', trapTabKey);
+
+  // Event listeners for closing the modal
+  imgCloseBtn.addEventListener('click', () => {
+    document.body.removeChild(modalContact);
+    modal.removeEventListener('keydown', trapTabKey);
+  });
+    
+    // Gestion de la touche Enter pour les flèches de la lightbox
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "Enter") {
+      const activeElement = document.activeElement;
+      if (activeElement === imgCloseBtn) {
+        clearContent();
+      } else if (activeElement === nextArrow) {
+        navigateToNext();
+      } else if (activeElement === backArrow) {
+        navigateToPrevious();
+      }
+    }
+    
+  });
+
     // Show the lightbox
     document.body.appendChild(modalContact);
-  
     imgCloseBtn.addEventListener("click", () => {
       document.body.removeChild(modalContact);
     });
@@ -106,11 +158,11 @@ backArrow.setAttribute("aria-label", "Revenir à la photo précédente");
     }
   });
   
-    const clearContent = () => {
+  const clearContent = () => {
+    if (document.body.contains(modalContact)) {
       document.body.removeChild(modalContact);
-    };
-
-
+    }
+  };
   
     // Add event listener to the next arrow
     nextArrow.addEventListener("click", () => {
@@ -169,6 +221,7 @@ document.addEventListener("keydown", function (event) {
 
     const nextImage = photographerMedia[nextIndex];
     createLightBox(nextImage, photographerMedia, nextIndex);
+    nextArrow.focus();
   };
 
   // Arrow function to navigate to the previous image
@@ -184,9 +237,9 @@ document.addEventListener("keydown", function (event) {
 
     const prevImage = photographerMedia[prevIndex];
     createLightBox(prevImage, photographerMedia, prevIndex);
+    backArrow.focus();
   };
 
-  };
-  
   
 
+  };

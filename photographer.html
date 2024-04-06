@@ -45,26 +45,28 @@
     <div class="modal">
       <header>
         <h2 id="contact-modal-title">Contactez-moi</h2>
-        <img class="close" src="assets/images/icons/close.svg"  aria-label="Fermer la fenêtre modale"  alt="Fermer modale" />
+        <button class="close" aria-label="Fermer la fenêtre modale" tabindex="5">
+          <img src="assets/images/icons/close.svg" alt="Fermer modale" />
+        </button>
       </header>
       <form>
         <div>
           <label class="modal-type" for="prenom">Prénom</label>
-          <input class="modal-input" type="text" id="prenom" required aria-required="true" />
+          <input class="modal-input" type="text" id="prenom" required aria-required="true" tabindex="1"/>
         </div>
         <div>
           <label class="modal-type" for="nom">Nom</label>
-          <input class="modal-input" type="text" id="nom" required aria-required="true" />
+          <input class="modal-input" type="text" id="nom" required aria-required="true" tabindex="2"/>
         </div>
         <div>
           <label class="modal-type" for="email">Email</label>
-          <input class="modal-input" type="email" id="email" required aria-required="true" />
+          <input class="modal-input" type="email" id="email" required aria-required="true" tabindex="3"/>
         </div>
         <div>
           <label class="modal-type" for="message">Votre message</label>
-          <input class="modal-message" type="text" id="message" required aria-required="true" />
+          <textarea class="modal-message" id="message" required aria-required="true" tabindex="4"></textarea>
         </div>
-        <button class="contact-button" type="submit" aria-label="Envoyer le message">Envoyer</button>
+        <button class="contact-button" type="submit" aria-label="Envoyer le message" tabindex="5">Envoyer</button>
       </form>
     </div>
   </dialog>
